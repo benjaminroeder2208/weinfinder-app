@@ -1,0 +1,231 @@
+:root {
+  --color-bg: #1c1612;
+  --color-surface: #241d18;
+  --color-card: #2a221c;
+  --color-text: #f2ede8;
+  --color-text-muted: #a89e94;
+  --color-accent: #a0bd00;
+  --color-accent-dark: #7a0e20;
+  --color-crimson: #ec3f55;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lato", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 300;
+}
+
+.screen {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+p {
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.progress-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 4px;
+  background: #3a312a;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+.option-button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  background: var(--color-surface);
+  border: 1px solid #3a312a;
+  border-radius: 10px;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.option-button:hover {
+  border-color: var(--color-accent);
+  background: #2f2620;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 14px 32px;
+  background: var(--color-accent);
+  color: #1c1612;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.cta-button:hover {
+  opacity: 0.9;
+}
+
+.cta-support {
+  margin-top: 12px;
+  font-size: 0.85rem;
+}
+
+.start-screen {
+  text-align: center;
+  padding-top: 96px;
+}
+
+.wine-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.result-card {
+  background: var(--color-card);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid #3a312a;
+}
+
+.result-label {
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.result-price {
+  color: var(--color-accent);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.shop-link-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: var(--color-accent);
+  color: #1c1612;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.taste-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+.taste-bar-track {
+  width: 100%;
+  height: 8px;
+  background: #3a312a;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.taste-bar-fill {
+  height: 100%;
+  background: var(--color-accent);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #3a312a;
+  color: var(--color-text);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  margin-right: 8px;
+}
+
+.why-box {
+  background: var(--color-surface);
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.why-box p {
+  color: var(--color-text);
+  font-style: italic;
+  margin: 0;
+}
+
+.alternative-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-card);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid #3a312a;
+}
+
+.restart-link {
+  display: block;
+  text-align: center;
+  margin-top: 24px;
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.error-box {
+  background: var(--color-surface);
+  border: 1px solid var(--color-crimson);
+  border-radius: 10px;
+  padding: 16px;
+  color: var(--color-text);
+}
