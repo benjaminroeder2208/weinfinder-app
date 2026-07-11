@@ -170,8 +170,8 @@ export default function ResultPage({ result, answers, quizConfig, tenant, onRest
                 Empfehlung per E-Mail erhalten
               </div>
               <p style={{ marginBottom: 12 }}>
-                Trag deine E-Mail-Adresse ein – du bekommst diese Empfehlung
-                direkt zugeschickt und kannst bei Fragen einfach antworten.
+                Trage deine E-Mail-Adresse ein &amp; du bekommst die Empfehlung
+                direkt per Mail
               </p>
               {sendError && (
                 <p style={{ color: "#c0394a", fontSize: "0.85rem" }}>{sendError}</p>
