@@ -25,6 +25,7 @@ export default function TenantApp() {
     getConfig(slug)
       .then((data) => {
         setTenant(data);
+        applyBranding(data.branding);
         setStep(STEP_START);
       })
       .catch((err) => {
@@ -32,6 +33,15 @@ export default function TenantApp() {
         setStep(STEP_ERROR);
       });
   }, [slug]);
+
+  function applyBranding(branding = {}) {
+    const root = document.documentElement.style;
+    if (branding.backgroundColor) root.setProperty("--color-bg", branding.backgroundColor);
+    if (branding.textColor) root.setProperty("--color-text", branding.textColor);
+    if (branding.headingColor) root.setProperty("--color-heading", branding.headingColor);
+    if (branding.primaryColor) root.setProperty("--color-accent", branding.primaryColor);
+    if (branding.secondaryColor) root.setProperty("--color-secondary", branding.secondaryColor);
+  }
 
   function handleStart() {
     setQuestionIndex(0);

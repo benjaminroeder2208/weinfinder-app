@@ -4,9 +4,9 @@
   --color-card: #2a221c;
   --color-text: #f2ede8;
   --color-text-muted: #a89e94;
+  --color-heading: #f2ede8;
   --color-accent: #a0bd00;
-  --color-accent-dark: #7a0e20;
-  --color-crimson: #ec3f55;
+  --color-secondary: #8b2615;
   --font-heading: "Playfair Display", serif;
   --font-body: "Lato", sans-serif;
 }
@@ -35,6 +35,7 @@ h2,
 h3 {
   font-family: var(--font-heading);
   font-weight: 700;
+  color: var(--color-heading);
   margin: 0 0 12px;
 }
 
@@ -181,8 +182,8 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #3a312a;
-  color: var(--color-text);
+  background: var(--color-secondary);
+  color: white;
   padding: 6px 14px;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -224,7 +225,7 @@ p {
 
 .error-box {
   background: var(--color-surface);
-  border: 1px solid var(--color-crimson);
+  border: 1px solid #c0394a;
   border-radius: 10px;
   padding: 16px;
   color: var(--color-text);
