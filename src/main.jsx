@@ -5,11 +5,13 @@ import "./styles.css";
 import TenantApp from "./App.jsx";
 import ConfirmPage from "./pages/ConfirmPage.jsx";
 import UnsubscribePage from "./pages/UnsubscribePage.jsx";
+import PrivacyPage from "./pages/PrivacyPage.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
+        <Route path="/w/:slug/datenschutz" element={<PrivacyPage />} />
         <Route path="/w/:slug/*" element={<TenantApp />} />
         <Route path="/confirm/:token" element={<ConfirmPage />} />
         <Route path="/unsubscribe/:token" element={<UnsubscribePage />} />

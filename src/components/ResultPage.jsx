@@ -204,6 +204,23 @@ export default function ResultPage({ result, answers, quizConfig, tenant, onRest
                   tenant?.name || "der Weinshop"
                 } meine E-Mail-Adresse speichert und mich zu dieser Weinempfehlung kontaktiert. Eine Weitergabe an Dritte erfolgt nicht, meine Einwilligung kann ich jederzeit formlos widerrufen.`}
               </label>
+              <a
+                href={
+                  tenant?.legal_config?.privacyPolicyUrl ||
+                  `/w/${tenant?.slug}/datenschutz`
+                }
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  display: "block",
+                  fontSize: "0.75rem",
+                  color: "var(--color-card-text)",
+                  opacity: 0.7,
+                  marginBottom: 12,
+                }}
+              >
+                Mehr Infos zum Datenschutz →
+              </a>
               <button
                 className="cta-button"
                 onClick={async () => {

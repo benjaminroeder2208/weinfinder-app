@@ -8,6 +8,10 @@ async function handle(res) {
   return res.json();
 }
 
+export function getPlatformSettings() {
+  return fetch(`${BASE_URL}/platform-settings`).then(handle);
+}
+
 export function getConfig(slug) {
   return fetch(`${BASE_URL}/tenants/${slug}/config`).then(handle);
 }
