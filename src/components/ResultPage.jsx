@@ -123,6 +123,7 @@ export default function ResultPage({ result, answers, quizConfig, tenant, onRest
   const HIDDEN_LEAD_CAPTURE_TIERS = ["basis", "pilot"];
   const leadCaptureEnabled = !HIDDEN_LEAD_CAPTURE_TIERS.includes(tenant?.pricing_tier);
   const [email, setEmail] = useState("");
+  const [consent, setConsent] = useState(false);
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [sendError, setSendError] = useState(null);
@@ -181,6 +182,26 @@ export default function ResultPage({ result, answers, quizConfig, tenant, onRest
                 onChange={(e) => setEmail(e.target.value)}
                 className="lead-input"
               />
+              <label
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: 8,
+                  fontSize: "0.8rem",
+                  color: "var(--color-card-text)",
+                  marginBottom: 12,
+                  cursor: "pointer",
+                }}
+              >
+                <input
+                  type="checkbox"
+                  style={{ width: "auto", marginTop: 2 }}
+                  checked={consent}
+                  onChange={(e) => setConsent(e.target.checked)}
+                />
+                Ich bin einverstanden, dass {tenant?.name || "der Weinshop"} mich unter
+                dieser E-Mail-Adresse zu meiner Anfrage kontaktiert.
+              </label>
               <button
                 className="cta-button"
                 onClick={async () => {
@@ -191,6 +212,7 @@ export default function ResultPage({ result, answers, quizConfig, tenant, onRest
                       email,
                       wineId: result.top.id,
                       answers,
+                      consent,
                     });
                     setSent(true);
                   } catch (err) {
@@ -199,7 +221,7 @@ export default function ResultPage({ result, answers, quizConfig, tenant, onRest
                     setSending(false);
                   }
                 }}
-                disabled={!email || sending}
+                disabled={!email || !consent || sending}
               >
                 {sending ? "Sendet..." : "Empfehlung senden"}
               </button>
