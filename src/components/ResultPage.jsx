@@ -118,7 +118,8 @@ function AlternativeCard({ wine, label }) {
   );
 }
 
-export default function ResultPage({ result, answers, quizConfig, onRestart }) {
+export default function ResultPage({ result, answers, quizConfig, tenant, onRestart }) {
+  const leadCaptureEnabled = tenant?.pricing_tier !== "basis";
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
 
@@ -156,42 +157,44 @@ export default function ResultPage({ result, answers, quizConfig, onRestart }) {
         <AlternativeCard wine={result.valueTip} label={uiText.valueTipLabel} />
       )}
 
-      <div className="result-card">
-        {!sent ? (
-          <>
-            <div style={{ fontWeight: 700, marginBottom: 8 }}>
-              ✉️ Empfehlung speichern
-            </div>
-            <p style={{ marginBottom: 12 }}>
-              Erhalte deine Weinempfehlung bequem per E-Mail.
-            </p>
-            <input
-              type="email"
-              placeholder="deine@email.de"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "10px 14px",
-                borderRadius: 8,
-                border: "1px solid #3a312a",
-                background: "#1c1612",
-                color: "white",
-                marginBottom: 12,
-              }}
-            />
-            <button
-              className="cta-button"
-              onClick={() => setSent(true)}
-              disabled={!email}
-            >
-              Empfehlung senden
-            </button>
-          </>
-        ) : (
-          <p>Danke! Deine Empfehlung ist unterwegs.</p>
-        )}
-      </div>
+      {leadCaptureEnabled && (
+        <div className="result-card">
+          {!sent ? (
+            <>
+              <div style={{ fontWeight: 700, marginBottom: 8 }}>
+                ✉️ Empfehlung speichern
+              </div>
+              <p style={{ marginBottom: 12 }}>
+                Erhalte deine Weinempfehlung bequem per E-Mail.
+              </p>
+              <input
+                type="email"
+                placeholder="deine@email.de"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                style={{
+                  width: "100%",
+                  padding: "10px 14px",
+                  borderRadius: 8,
+                  border: "1px solid #3a312a",
+                  background: "#1c1612",
+                  color: "white",
+                  marginBottom: 12,
+                }}
+              />
+              <button
+                className="cta-button"
+                onClick={() => setSent(true)}
+                disabled={!email}
+              >
+                Empfehlung senden
+              </button>
+            </>
+          ) : (
+            <p>Danke! Deine Empfehlung ist unterwegs.</p>
+          )}
+        </div>
+      )}
 
       <div style={{ textAlign: "center", marginTop: 24 }}>
         <div style={{ marginBottom: 12, fontSize: "0.85rem", color: "#a89e94" }}>

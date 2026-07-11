@@ -126,6 +126,7 @@ export default function TenantApp() {
         result={result}
         answers={answers}
         quizConfig={tenant.quiz_config}
+        tenant={tenant}
         onRestart={handleRestart}
       />
     );
