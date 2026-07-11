@@ -20,7 +20,7 @@ export default function TenantApp() {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [result, setResult] = useState(null);
-  const [selectedSource, setSelectedSource] = useState(null);
+  const [selectedSources, setSelectedSources] = useState([]);
 
   useEffect(() => {
     getConfig(slug)
@@ -28,7 +28,7 @@ export default function TenantApp() {
         setTenant(data);
         applyBranding(data.branding);
         if (data.demo_options?.length > 0) {
-          setSelectedSource(data.demo_options[0].slug);
+          setSelectedSources(data.demo_options.map((o) => o.slug));
         }
         setStep(STEP_START);
       })
@@ -37,6 +37,14 @@ export default function TenantApp() {
         setStep(STEP_ERROR);
       });
   }, [slug]);
+
+  function handleToggleSource(sourceSlug) {
+    setSelectedSources((prev) =>
+      prev.includes(sourceSlug)
+        ? prev.filter((s) => s !== sourceSlug)
+        : [...prev, sourceSlug]
+    );
+  }
 
   function applyBranding(branding = {}) {
     const root = document.documentElement.style;
@@ -64,7 +72,9 @@ export default function TenantApp() {
 
     if (isLast) {
       setStep(STEP_LOADING);
-      const payload = selectedSource ? { ...nextAnswers, sourceSlug: selectedSource } : nextAnswers;
+      const payload = selectedSources.length > 0
+        ? { ...nextAnswers, sourceSlugs: selectedSources }
+        : nextAnswers;
       submitQuiz(slug, payload)
         .then((data) => {
           setResult(data);
@@ -104,8 +114,8 @@ export default function TenantApp() {
       <StartScreen
         tenant={tenant}
         onStart={handleStart}
-        selectedSource={selectedSource}
-        onSelectSource={setSelectedSource}
+        selectedSources={selectedSources}
+        onToggleSource={handleToggleSource}
       />
     );
   }

@@ -1,6 +1,6 @@
 import { uiText } from "../uiText.js";
 
-export default function StartScreen({ tenant, onStart, selectedSource, onSelectSource }) {
+export default function StartScreen({ tenant, onStart, selectedSources, onToggleSource }) {
   const content = { ...uiText, ...tenant?.content };
   const demoOptions = tenant?.demo_options || [];
   const isDemo = tenant?.pricing_tier === "demo" && demoOptions.length > 0;
@@ -18,42 +18,60 @@ export default function StartScreen({ tenant, onStart, selectedSource, onSelectS
       )}
 
       {isDemo && (
-        <div style={{ maxWidth: 320, margin: "0 auto 24px" }}>
+        <div style={{ maxWidth: 360, margin: "0 auto 24px", textAlign: "left" }}>
           <label
             style={{
               display: "block",
               fontSize: "0.75rem",
               color: "var(--color-text-muted)",
               marginBottom: 6,
+              textAlign: "center",
             }}
           >
-            Weine anzeigen von
+            Weine anzeigen von (1 oder mehrere auswählen)
           </label>
-          <select
-            value={selectedSource || ""}
-            onChange={(e) => onSelectSource(e.target.value || null)}
+          <div
             style={{
-              width: "100%",
-              padding: "10px 14px",
-              borderRadius: 8,
               border: "1px solid #3a312a",
+              borderRadius: 8,
+              padding: 12,
               background: "var(--color-card-bg)",
-              color: "var(--color-card-text)",
             }}
           >
             {demoOptions.map((opt) => (
-              <option key={opt.slug} value={opt.slug}>
+              <label
+                key={opt.slug}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  fontSize: "0.9rem",
+                  color: "var(--color-card-text)",
+                  padding: "4px 0",
+                  cursor: "pointer",
+                }}
+              >
+                <input
+                  type="checkbox"
+                  style={{ width: "auto" }}
+                  checked={selectedSources.includes(opt.slug)}
+                  onChange={() => onToggleSource(opt.slug)}
+                />
                 {opt.name}
-              </option>
+              </label>
             ))}
-          </select>
+          </div>
         </div>
       )}
 
       <h1>{content.headline}</h1>
       <p style={{ fontStyle: "italic" }}>{content.subheadlineTemplate}</p>
       <p>{content.description}</p>
-      <button className="cta-button" onClick={onStart}>
+      <button
+        className="cta-button"
+        onClick={onStart}
+        disabled={isDemo && selectedSources.length === 0}
+      >
         {content.ctaLabel}
       </button>
       <div className="cta-support">{content.ctaSupportText}</div>
