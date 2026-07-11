@@ -3,12 +3,16 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./styles.css";
 import TenantApp from "./App.jsx";
+import ConfirmPage from "./pages/ConfirmPage.jsx";
+import UnsubscribePage from "./pages/UnsubscribePage.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/w/:slug/*" element={<TenantApp />} />
+        <Route path="/confirm/:token" element={<ConfirmPage />} />
+        <Route path="/unsubscribe/:token" element={<UnsubscribePage />} />
         <Route
           path="*"
           element={

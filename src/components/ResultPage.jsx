@@ -167,10 +167,11 @@ export default function ResultPage({ result, answers, quizConfig, tenant, onRest
           {!sent ? (
             <>
               <div style={{ fontWeight: 700, marginBottom: 8 }}>
-                ✉️ Empfehlung speichern
+                Empfehlung per E-Mail erhalten
               </div>
               <p style={{ marginBottom: 12 }}>
-                Hinterlasse deine E-Mail-Adresse, damit wir dich zu dieser Empfehlung kontaktieren können.
+                Trag deine E-Mail-Adresse ein – du bekommst diese Empfehlung
+                direkt zugeschickt und kannst bei Fragen einfach antworten.
               </p>
               {sendError && (
                 <p style={{ color: "#c0394a", fontSize: "0.85rem" }}>{sendError}</p>
@@ -199,8 +200,9 @@ export default function ResultPage({ result, answers, quizConfig, tenant, onRest
                   checked={consent}
                   onChange={(e) => setConsent(e.target.checked)}
                 />
-                Ich bin einverstanden, dass {tenant?.name || "der Weinshop"} mich unter
-                dieser E-Mail-Adresse zu meiner Anfrage kontaktiert.
+                {`Ich bin einverstanden, dass ${
+                  tenant?.name || "der Weinshop"
+                } meine E-Mail-Adresse speichert und mich zu dieser Weinempfehlung kontaktiert. Eine Weitergabe an Dritte erfolgt nicht, meine Einwilligung kann ich jederzeit formlos widerrufen.`}
               </label>
               <button
                 className="cta-button"
@@ -223,11 +225,14 @@ export default function ResultPage({ result, answers, quizConfig, tenant, onRest
                 }}
                 disabled={!email || !consent || sending}
               >
-                {sending ? "Sendet..." : "Empfehlung senden"}
+                {sending ? "Sendet..." : "Empfehlung zuschicken lassen"}
               </button>
             </>
           ) : (
-            <p>Danke! Wir haben deine Anfrage gespeichert.</p>
+            <p>
+              Fast geschafft! Wir haben dir eine Bestätigungsmail geschickt –
+              bitte klicke den Link darin an.
+            </p>
           )}
         </div>
       )}

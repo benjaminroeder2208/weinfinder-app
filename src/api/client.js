@@ -24,6 +24,14 @@ export function submitQuiz(slug, answers) {
   }).then(handle);
 }
 
+export function confirmLead(token) {
+  return fetch(`${BASE_URL}/leads/confirm/${token}`).then(handle);
+}
+
+export function unsubscribeLead(token) {
+  return fetch(`${BASE_URL}/leads/unsubscribe/${token}`).then(handle);
+}
+
 export function submitLead(slug, data) {
   return fetch(`${BASE_URL}/tenants/${slug}/leads`, {
     method: "POST",
