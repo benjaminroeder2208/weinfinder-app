@@ -23,3 +23,11 @@ export function submitQuiz(slug, answers) {
     body: JSON.stringify(answers),
   }).then(handle);
 }
+
+export function submitLead(slug, data) {
+  return fetch(`${BASE_URL}/tenants/${slug}/leads`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  }).then(handle);
+}

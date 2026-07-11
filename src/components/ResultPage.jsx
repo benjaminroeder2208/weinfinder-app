@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { uiText } from "../uiText.js";
 import { tasteProfile, buildWhyText } from "../matchExplain.js";
+import { submitLead } from "../api/client.js";
 
 function TasteBars({ wine }) {
   const profile = tasteProfile(wine);
@@ -123,6 +124,8 @@ export default function ResultPage({ result, answers, quizConfig, tenant, onRest
   const leadCaptureEnabled = !HIDDEN_LEAD_CAPTURE_TIERS.includes(tenant?.pricing_tier);
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState(null);
 
   if (!result?.top) {
     return (
@@ -166,8 +169,11 @@ export default function ResultPage({ result, answers, quizConfig, tenant, onRest
                 ✉️ Empfehlung speichern
               </div>
               <p style={{ marginBottom: 12 }}>
-                Erhalte deine Weinempfehlung bequem per E-Mail.
+                Hinterlasse deine E-Mail-Adresse, damit wir dich zu dieser Empfehlung kontaktieren können.
               </p>
+              {sendError && (
+                <p style={{ color: "#c0394a", fontSize: "0.85rem" }}>{sendError}</p>
+              )}
               <input
                 type="email"
                 placeholder="deine@email.de"
@@ -177,14 +183,29 @@ export default function ResultPage({ result, answers, quizConfig, tenant, onRest
               />
               <button
                 className="cta-button"
-                onClick={() => setSent(true)}
-                disabled={!email}
+                onClick={async () => {
+                  setSendError(null);
+                  setSending(true);
+                  try {
+                    await submitLead(tenant.slug, {
+                      email,
+                      wineId: result.top.id,
+                      answers,
+                    });
+                    setSent(true);
+                  } catch (err) {
+                    setSendError(err.message);
+                  } finally {
+                    setSending(false);
+                  }
+                }}
+                disabled={!email || sending}
               >
-                Empfehlung senden
+                {sending ? "Sendet..." : "Empfehlung senden"}
               </button>
             </>
           ) : (
-            <p>Danke! Deine Empfehlung ist unterwegs.</p>
+            <p>Danke! Wir haben deine Anfrage gespeichert.</p>
           )}
         </div>
       )}
