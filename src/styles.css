@@ -72,10 +72,10 @@ p {
   text-align: left;
   padding: 16px 20px;
   margin-bottom: 12px;
-  background: var(--color-surface);
+  background: var(--color-card-bg);
+  color: var(--color-card-text);
   border: 1px solid #3a312a;
   border-radius: 10px;
-  color: var(--color-text);
   font-family: var(--font-body);
   font-size: 1rem;
   cursor: pointer;
@@ -84,7 +84,7 @@ p {
 
 .option-button:hover {
   border-color: var(--color-accent);
-  background: #2f2620;
+  filter: brightness(1.15);
 }
 
 .cta-button {
