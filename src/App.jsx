@@ -41,6 +41,8 @@ export default function TenantApp() {
     if (branding.headingColor) root.setProperty("--color-heading", branding.headingColor);
     if (branding.primaryColor) root.setProperty("--color-accent", branding.primaryColor);
     if (branding.secondaryColor) root.setProperty("--color-secondary", branding.secondaryColor);
+    if (branding.cardBackgroundColor) root.setProperty("--color-card-bg", branding.cardBackgroundColor);
+    if (branding.cardTextColor) root.setProperty("--color-card-text", branding.cardTextColor);
   }
 
   function handleStart() {

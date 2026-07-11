@@ -1,7 +1,8 @@
 :root {
   --color-bg: #1c1612;
   --color-surface: #241d18;
-  --color-card: #2a221c;
+  --color-card-bg: #2a221c;
+  --color-card-text: #a89e94;
   --color-text: #f2ede8;
   --color-text-muted: #a89e94;
   --color-heading: #f2ede8;
@@ -118,11 +119,15 @@ p {
 }
 
 .result-card {
-  background: var(--color-card);
+  background: var(--color-card-bg);
   border-radius: 14px;
   padding: 24px;
   margin-bottom: 24px;
   border: 1px solid #3a312a;
+}
+
+.result-card p {
+  color: var(--color-card-text);
 }
 
 .result-label {
@@ -207,11 +212,16 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--color-card);
+  background: var(--color-card-bg);
   border-radius: 12px;
   padding: 16px;
   margin-bottom: 12px;
   border: 1px solid #3a312a;
+}
+
+.alternative-card strong,
+.alternative-card p {
+  color: var(--color-card-text);
 }
 
 .restart-link {
