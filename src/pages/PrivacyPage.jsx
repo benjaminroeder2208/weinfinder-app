@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getConfig, getPlatformSettings } from "../api/client.js";
+import { applyBranding } from "../branding.js";
 
 export default function PrivacyPage() {
   const { slug } = useParams();
@@ -9,7 +10,12 @@ export default function PrivacyPage() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    getConfig(slug).then(setTenant).catch((err) => setError(err.message));
+    getConfig(slug)
+      .then((data) => {
+        setTenant(data);
+        applyBranding(data.branding);
+      })
+      .catch((err) => setError(err.message));
     getPlatformSettings().then(setPlatform).catch(() => setPlatform({}));
   }, [slug]);
 
