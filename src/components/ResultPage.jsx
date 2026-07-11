@@ -196,7 +196,14 @@ export default function ResultPage({ result, answers, quizConfig, tenant, onRest
               >
                 <input
                   type="checkbox"
-                  style={{ width: "auto", marginTop: 2 }}
+                  style={{
+                    width: 20,
+                    height: 20,
+                    minWidth: 20,
+                    flexShrink: 0,
+                    marginTop: 2,
+                    accentColor: "var(--color-accent)",
+                  }}
                   checked={consent}
                   onChange={(e) => setConsent(e.target.checked)}
                 />
