@@ -75,13 +75,13 @@ function TopWineCard({ wine, answers, quizConfig }) {
           </div>
           {wine.food_pairing.map((f) => (
             <span key={f} className="tag">
-              🍽️ {f}
+              {f}
             </span>
           ))}
         </div>
       )}
       <div className="why-box">
-        <div style={{ fontSize: "0.75rem", marginBottom: 6, color: "#a89e94" }}>
+        <div style={{ fontSize: "0.8rem", marginBottom: 6, color: "var(--color-card-text)", opacity: 0.75 }}>
           {uiText.whyThisWineLabel}
         </div>
         <p>„{buildWhyText(wine, answers, quizConfig)}"</p>
@@ -141,7 +141,7 @@ export default function ResultPage({ result, answers, quizConfig, tenant, onRest
 
   return (
     <div className="screen">
-      <h1>{uiText.resultHeadline} 🍷</h1>
+      <h1>{uiText.resultHeadline}</h1>
       <p style={{ color: "var(--color-text)" }}>{uiText.resultIntro}</p>
 
       <TopWineCard wine={result.top} answers={answers} quizConfig={quizConfig} />

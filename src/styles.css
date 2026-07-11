@@ -224,7 +224,7 @@ p {
 }
 
 .why-box p {
-  color: var(--color-text);
+  color: var(--color-card-text);
   font-style: italic;
   margin: 0;
 }
