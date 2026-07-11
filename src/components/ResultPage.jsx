@@ -225,7 +225,7 @@ export default function ResultPage({ result, answers, quizConfig, tenant, onRest
                 }}
                 disabled={!email || !consent || sending}
               >
-                {sending ? "Sendet..." : "Empfehlung zuschicken lassen"}
+                {sending ? "Sendet..." : "Empfehlung anfordern"}
               </button>
             </>
           ) : (
