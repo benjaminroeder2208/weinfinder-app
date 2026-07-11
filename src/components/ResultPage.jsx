@@ -173,15 +173,7 @@ export default function ResultPage({ result, answers, quizConfig, tenant, onRest
                 placeholder="deine@email.de"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                style={{
-                  width: "100%",
-                  padding: "10px 14px",
-                  borderRadius: 8,
-                  border: "1px solid #3a312a",
-                  background: "#1c1612",
-                  color: "white",
-                  marginBottom: 12,
-                }}
+                className="lead-input"
               />
               <button
                 className="cta-button"
@@ -198,7 +190,7 @@ export default function ResultPage({ result, answers, quizConfig, tenant, onRest
       )}
 
       <div style={{ textAlign: "center", marginTop: 24 }}>
-        <div style={{ marginBottom: 12, fontSize: "0.85rem", color: "#a89e94" }}>
+        <div style={{ marginBottom: 12, fontSize: "0.85rem", color: "var(--color-text-muted)" }}>
           {uiText.shareLabel}
         </div>
         <a
@@ -218,8 +210,7 @@ export default function ResultPage({ result, answers, quizConfig, tenant, onRest
           )}&body=${encodeURIComponent(
             `Ich habe eine Weinempfehlung für dich: ${result.top.name}\n\n${wineLink}`
           )}`}
-          className="cta-button"
-          style={{ background: "#3a312a", color: "white" }}
+          className="cta-button btn-neutral"
         >
           ✉️ {uiText.emailShareLabel}
         </a>
