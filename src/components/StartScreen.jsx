@@ -1,16 +1,26 @@
 import { uiText } from "../uiText.js";
 
 export default function StartScreen({ tenant, onStart }) {
+  const content = { ...uiText, ...tenant?.content };
+
   return (
     <div className="screen start-screen">
-      <div className="wine-emoji">🍷</div>
-      <h1>{uiText.headline}</h1>
-      <p style={{ fontStyle: "italic" }}>{uiText.subheadlineTemplate}</p>
-      <p>{uiText.description}</p>
+      {content.logoUrl ? (
+        <img
+          src={content.logoUrl}
+          alt={tenant?.name || "Logo"}
+          style={{ maxHeight: 64, marginBottom: 16 }}
+        />
+      ) : (
+        <div className="wine-emoji">🍷</div>
+      )}
+      <h1>{content.headline}</h1>
+      <p style={{ fontStyle: "italic" }}>{content.subheadlineTemplate}</p>
+      <p>{content.description}</p>
       <button className="cta-button" onClick={onStart}>
-        {uiText.ctaLabel}
+        {content.ctaLabel}
       </button>
-      <div className="cta-support">{uiText.ctaSupportText}</div>
+      <div className="cta-support">{content.ctaSupportText}</div>
       {tenant?.name && (
         <p style={{ marginTop: 32, fontSize: "0.8rem" }}>
           präsentiert von {tenant.name}

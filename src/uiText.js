@@ -1,5 +1,8 @@
 // Feste UI-Texte, die für alle Tenants gleich sind.
 // Tenant-spezifisch sind nur: Name, Branding-Farbe, Quiz-Fragen und Weine.
+// Fallback-Werte, falls ein Tenant für ein Feld keinen eigenen Content hinterlegt hat.
+// Startseiten-Texte und Logo kommen künftig aus tenant.content (siehe App.jsx),
+// alles andere hier bleibt fest für alle Shops gleich.
 export const uiText = {
   headline: "Weinfinder",
   subheadlineTemplate: "Finde den Wein, der wirklich zu deinem Geschmack passt.",
@@ -7,6 +10,7 @@ export const uiText = {
     "Beantworte wenige kurze Fragen und erhalte eine persönliche Weinempfehlung – fast wie im Gespräch mit einem Sommelier.",
   ctaLabel: "Weinberatung starten",
   ctaSupportText: "Schnell, einfach und individuell",
+  logoUrl: "",
   resultHeadline: "Dein persönliches Wein-Match",
   resultIntro:
     "Basierend auf deinem Geschmack, Anlass und deinen Vorlieben empfehlen wir dir diese Weine.",
