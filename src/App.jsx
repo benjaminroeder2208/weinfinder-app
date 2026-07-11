@@ -20,12 +20,16 @@ export default function TenantApp() {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [result, setResult] = useState(null);
+  const [selectedSource, setSelectedSource] = useState(null);
 
   useEffect(() => {
     getConfig(slug)
       .then((data) => {
         setTenant(data);
         applyBranding(data.branding);
+        if (data.demo_options?.length > 0) {
+          setSelectedSource(data.demo_options[0].slug);
+        }
         setStep(STEP_START);
       })
       .catch((err) => {
@@ -60,7 +64,8 @@ export default function TenantApp() {
 
     if (isLast) {
       setStep(STEP_LOADING);
-      submitQuiz(slug, nextAnswers)
+      const payload = selectedSource ? { ...nextAnswers, sourceSlug: selectedSource } : nextAnswers;
+      submitQuiz(slug, payload)
         .then((data) => {
           setResult(data);
           setStep(STEP_RESULT);
@@ -95,7 +100,14 @@ export default function TenantApp() {
   }
 
   if (step === STEP_START) {
-    return <StartScreen tenant={tenant} onStart={handleStart} />;
+    return (
+      <StartScreen
+        tenant={tenant}
+        onStart={handleStart}
+        selectedSource={selectedSource}
+        onSelectSource={setSelectedSource}
+      />
+    );
   }
 
   if (step === STEP_QUIZ) {

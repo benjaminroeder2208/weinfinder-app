@@ -119,7 +119,8 @@ function AlternativeCard({ wine, label }) {
 }
 
 export default function ResultPage({ result, answers, quizConfig, tenant, onRestart }) {
-  const leadCaptureEnabled = tenant?.pricing_tier !== "basis";
+  const HIDDEN_LEAD_CAPTURE_TIERS = ["basis", "pilot"];
+  const leadCaptureEnabled = !HIDDEN_LEAD_CAPTURE_TIERS.includes(tenant?.pricing_tier);
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
 
