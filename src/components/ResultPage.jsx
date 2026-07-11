@@ -135,7 +135,7 @@ export default function ResultPage({ result, answers, quizConfig, onRestart }) {
     );
   }
 
-  const shareUrl = window.location.href;
+  const wineLink = result.top.link;
 
   return (
     <div className="screen">
@@ -198,7 +198,9 @@ export default function ResultPage({ result, answers, quizConfig, onRestart }) {
           {uiText.shareLabel}
         </div>
         <a
-          href={`https://wa.me/?text=${encodeURIComponent(shareUrl)}`}
+          href={`https://wa.me/?text=${encodeURIComponent(
+            `Meine Weinempfehlung: ${result.top.name} – ${wineLink}`
+          )}`}
           target="_blank"
           rel="noreferrer"
           className="cta-button"
@@ -210,7 +212,7 @@ export default function ResultPage({ result, answers, quizConfig, onRestart }) {
           href={`mailto:?subject=${encodeURIComponent(
             "Meine persönliche Weinempfehlung"
           )}&body=${encodeURIComponent(
-            `Ich habe eine Weinempfehlung für dich: ${result.top.name}\n\n${shareUrl}`
+            `Ich habe eine Weinempfehlung für dich: ${result.top.name}\n\n${wineLink}`
           )}`}
           className="cta-button"
           style={{ background: "#3a312a", color: "white" }}
