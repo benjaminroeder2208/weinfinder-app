@@ -206,13 +206,17 @@ export default function ResultPage({ result, answers, quizConfig, onRestart }) {
         >
           {uiText.whatsappLabel}
         </a>
-        <button
+        <a
+          href={`mailto:?subject=${encodeURIComponent(
+            "Meine persönliche Weinempfehlung"
+          )}&body=${encodeURIComponent(
+            `Ich habe eine Weinempfehlung für dich: ${result.top.name}\n\n${shareUrl}`
+          )}`}
           className="cta-button"
           style={{ background: "#3a312a", color: "white" }}
-          onClick={() => navigator.clipboard.writeText(shareUrl)}
         >
-          {uiText.shareButtonLabel}
-        </button>
+          ✉️ {uiText.emailShareLabel}
+        </a>
       </div>
 
       <span className="restart-link" onClick={onRestart}>

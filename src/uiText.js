@@ -25,6 +25,7 @@ export const uiText = {
   whatsappLabel: "WhatsApp",
   shareButtonLabel: "Teilen",
   copiedLabel: "Kopiert!",
+  emailShareLabel: "Per E-Mail teilen",
   foodPairingLabel: "Passt besonders gut zu",
   tasteProfileLabel: "Geschmacksprofil",
   whyThisWineLabel: "Warum dieser Wein zu dir passt",

@@ -21,11 +21,6 @@ export default function StartScreen({ tenant, onStart }) {
         {content.ctaLabel}
       </button>
       <div className="cta-support">{content.ctaSupportText}</div>
-      {tenant?.name && (
-        <p style={{ marginTop: 32, fontSize: "0.8rem" }}>
-          präsentiert von {tenant.name}
-        </p>
-      )}
     </div>
   );
 }
