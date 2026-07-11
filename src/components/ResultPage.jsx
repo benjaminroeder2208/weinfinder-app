@@ -142,7 +142,7 @@ export default function ResultPage({ result, answers, quizConfig, tenant, onRest
   return (
     <div className="screen">
       <h1>{uiText.resultHeadline} 🍷</h1>
-      <p>{uiText.resultIntro}</p>
+      <p style={{ color: "var(--color-text)" }}>{uiText.resultIntro}</p>
 
       <TopWineCard wine={result.top} answers={answers} quizConfig={quizConfig} />
 
@@ -212,7 +212,7 @@ export default function ResultPage({ result, answers, quizConfig, tenant, onRest
           )}`}
           className="cta-button btn-neutral"
         >
-          ✉️ {uiText.emailShareLabel}
+          {uiText.emailShareLabel}
         </a>
       </div>
 

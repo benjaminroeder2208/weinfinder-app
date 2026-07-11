@@ -114,12 +114,24 @@ p {
 
 .cta-support {
   margin-top: 12px;
-  font-size: 0.85rem;
+  font-size: 1rem;
+  color: var(--color-text);
 }
 
 .start-screen {
   text-align: center;
   padding-top: 96px;
+}
+
+.start-subheadline {
+  font-style: italic;
+  color: var(--color-text);
+  font-size: 1.15rem;
+}
+
+.start-description {
+  color: var(--color-text);
+  font-size: 1.1rem;
 }
 
 .wine-emoji {

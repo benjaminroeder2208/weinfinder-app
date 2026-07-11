@@ -65,8 +65,8 @@ export default function StartScreen({ tenant, onStart, selectedSources, onToggle
       )}
 
       <h1>{content.headline}</h1>
-      <p style={{ fontStyle: "italic" }}>{content.subheadlineTemplate}</p>
-      <p>{content.description}</p>
+      <p className="start-subheadline">{content.subheadlineTemplate}</p>
+      <p className="start-description">{content.description}</p>
       <button
         className="cta-button"
         onClick={onStart}
