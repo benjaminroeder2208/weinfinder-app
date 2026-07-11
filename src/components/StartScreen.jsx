@@ -28,7 +28,7 @@ export default function StartScreen({ tenant, onStart, selectedSources, onToggle
               textAlign: "center",
             }}
           >
-            Weine anzeigen von (1 oder mehrere auswählen)
+            Wähle ein oder mehrere Beispiel-Weinshops:
           </label>
           <div
             style={{
